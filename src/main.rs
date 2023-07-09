@@ -9,7 +9,6 @@ use crate::data::{DATA, StoredURL};
 #[tokio::main]
 async fn main() {
     
-
     start_bot().await;
 
 }
@@ -18,18 +17,13 @@ async fn start_bot() {
     
     pretty_env_logger::init();
     log::info!("Starting command bot...");
-    
 
-    // old labaz
-    // let bot = Bot::from_env();
-
-    // new labaz
     let token = String::from("6336060794:AAGTgM_fqf3lJEsHUEkdnuyl-Uri437W7po");
     let bot = Bot::new(token);
 
 
     let addr = ([127, 0, 0, 1], 8000).into();
-    let ngrok_url = "https://3acd-2a00-1370-8188-300b-bd01-f5e1-5f1e-16e0.ngrok-free.app".parse().unwrap();
+    let ngrok_url = "https://d67c-2a00-1370-8188-300b-189a-242e-3aba-b212.ngrok-free.app".parse().unwrap();
     let listener = webhooks::axum(bot.clone(), webhooks::Options::new(addr, ngrok_url))
         .await
         .expect("Couldn't setup webhook");
